@@ -1,0 +1,22 @@
+{
+  "name": "udj",
+  "version": "1.0.0",
+  "description": "United DJs - Lyd og DJ udlejning",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Jakob Klæbel Blomsterberg",
+  "license": "ISC"
+}
