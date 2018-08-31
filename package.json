@@ -8,14 +8,14 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
-    "bcryptjs": "*",
-    "cors": "*",
-    "jsonwebtoken": "*",
-    "body-parser": "*",
-    "passport": "*",
-    "passport-jwt": "*"
+    "express": "4.16.x",
+    "mongoose": "5.2.x",
+    "bcryptjs": "2.4.x",
+    "cors": "2.8.x",
+    "jsonwebtoken": "8.3.x",
+    "body-parser": "1.18.x",
+    "passport": "0.4.x",
+    "passport-jwt": "4.0.x"
   },
   "author": "Jakob Klæbel Blomsterberg",
   "license": "ISC"
