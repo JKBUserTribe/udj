@@ -23,12 +23,31 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit(){
     const user = {
+
       username: this.username,
       password: this.password
+
     }
 
     this.authService.authenticateUser(user).subscribe(data => {
-      console.log(data)
+      if(data.success){
+
+        this.authService.storeUserData(data.token, data.user);
+
+        this._flashMessagesService.show(data.msg, {
+          cssClass: 'alert-success',
+        });
+
+        this.router.navigate(['/dashboard']);
+
+      } else {
+
+        this._flashMessagesService.show(data.msg, {
+          cssClass: 'alert-danger',
+        });
+
+        this.router.navigate(['/login']);
+      }
     })
   }
 }
