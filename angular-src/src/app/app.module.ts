@@ -29,7 +29,7 @@ const appRoutes: Routes = [
     ProfileComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
