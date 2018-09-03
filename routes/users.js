@@ -7,21 +7,27 @@ const User = require('../models/user');
 
 // Register Route
 router.post('/register', (req, res, next) => {
-  let newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password,
-    role: req.body.role
-  });
 
-  User.addUser(newUser, (err, user) => {
-    if(err){
-      res.json({success: false, msg:'Failed to register user'})
-    } else {
-      res.json({success: true, msg:'User registered'})
-    }
-  })
+  // Only allow to create 'user'
+  if(req.body.role !== 'user'){
+    res.json({success: false, msg:'Failed to register user'})
+  } else {
+    let newUser = new User({
+      name: req.body.name,
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password,
+      role: req.body.role
+    });
+
+    User.addUser(newUser, (err, user) => {
+      if(err){
+        res.json({success: false, msg:'Failed to register user'})
+      } else {
+        res.json({success: true, msg:'User registered'})
+      }
+    })
+  }
 });
 
 // Authenticate Route
