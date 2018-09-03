@@ -10,14 +10,19 @@ router.post('/register', (req, res, next) => {
 
   // Only allow to create 'user'
   if(req.body.role !== 'user'){
+
     res.json({success: false, msg:'Failed to register user'})
+
   } else {
+
     let newUser = new User({
+
       name: req.body.name,
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
       role: req.body.role
+
     });
 
     User.addUser(newUser, (err, user) => {
@@ -44,6 +49,7 @@ router.post('/authenticate', (req, res, next) => {
 
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
+
       if(isMatch){
         const token = jwt.sign({data: user}, config.secret, {
           expiresIn: 604800 // 1 week in seconds
@@ -57,10 +63,14 @@ router.post('/authenticate', (req, res, next) => {
             name: user.name,
             username: user.username,
             email: user.email
-          }
+          },
+          msg: 'Welcome '+user.name
         })
+
       } else {
+
         return res.json({success: false, msg: msgIncorrectLogin});
+
       }
     });
   });
