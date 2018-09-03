@@ -37,7 +37,7 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
 
-    localStorage.setItem('id_token', '');
-    localStorage.setItem('user', '');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('user');
   }
 }
