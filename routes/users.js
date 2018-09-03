@@ -34,11 +34,12 @@ router.post('/register', (req, res, next) => {
 router.post('/authenticate', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const msgIncorrectLogin = "Username or Password is Incorrect";
 
   User.getUserByUsername(username, (err, user) => {
     if(err) throw err;
     if(!user){
-      return res.json({success: false, msg: 'User not found'});
+      return res.json({success: false, msg: msgIncorrectLogin});
     }
 
     User.comparePassword(password, user.password, (err, isMatch) => {
@@ -59,7 +60,7 @@ router.post('/authenticate', (req, res, next) => {
           }
         })
       } else {
-        return res.json({success: false, msg: 'Wrong password'});
+        return res.json({success: false, msg: msgIncorrectLogin});
       }
     });
   });
