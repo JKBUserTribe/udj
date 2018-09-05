@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   name: String;
   email: String;
-  username: String;
   password: String;
 
   constructor(
@@ -29,9 +28,9 @@ export class RegisterComponent implements OnInit {
     const user = {
 
       name: this.name,
-      email: this.email,
-      username: this.username,
-      password: this.password
+      email: this.email.toLowerCase(),
+      password: this.password,
+      role: 'user'
 
     }
 
@@ -55,7 +54,7 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    // Register Username
+    // Register User
     this.authService.registerUser(user).subscribe(data => {
       if(data.success){
 

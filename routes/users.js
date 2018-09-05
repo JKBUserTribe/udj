@@ -19,7 +19,6 @@ router.post('/register', (req, res, next) => {
 
       name: req.body.name,
       email: req.body.email,
-      username: req.body.username,
       password: req.body.password,
       role: req.body.role
 
@@ -37,11 +36,12 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate Route
 router.post('/authenticate', (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
-  const msgIncorrectLogin = "Username or Password is Incorrect";
 
-  User.getUserByUsername(username, (err, user) => {
+  const msgIncorrectLogin = "Email or Password is Incorrect";
+
+  User.getUserByEmail(email, (err, user) => {
     if(err) throw err;
     if(!user){
       return res.json({success: false, msg: msgIncorrectLogin});
@@ -51,6 +51,12 @@ router.post('/authenticate', (req, res, next) => {
       if(err) throw err;
 
       if(isMatch){
+        user = {
+          _id: user._id,
+          name: user.name,
+          email: user.email
+        }
+
         const token = jwt.sign({data: user}, config.secret, {
           expiresIn: 604800 // 1 week in seconds
         });
@@ -59,9 +65,8 @@ router.post('/authenticate', (req, res, next) => {
           success: true,
           token: 'bearer '+token,
           user: {
-            id: user._id,
+            _id: user.id,
             name: user.name,
-            username: user.username,
             email: user.email
           },
           msg: 'Welcome '+user.name
