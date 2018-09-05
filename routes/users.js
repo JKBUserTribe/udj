@@ -65,7 +65,7 @@ router.post('/authenticate', (req, res, next) => {
           success: true,
           token: 'bearer '+token,
           user: {
-            _id: user.id,
+            _id: user._id,
             name: user.name,
             email: user.email
           },
