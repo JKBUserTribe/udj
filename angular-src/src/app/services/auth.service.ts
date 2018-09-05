@@ -9,7 +9,9 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http:Http) { }
+  constructor(
+    private http:Http
+  ) { }
 
   registerUser(user){
     let headers = new Headers();
@@ -45,6 +47,10 @@ export class AuthService {
 
     this.authToken = token;
     this.user = user;
+  }
+
+  loggedIn(){
+    //console.log(this.jwtHelper.isTokenExpired());
   }
 
   logout(){

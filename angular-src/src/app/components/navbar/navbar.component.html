@@ -18,9 +18,10 @@
       </form>
 
       <ul class="nav navbar-nav mr-sm-2 ml-4">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/login']">Login</a></li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/register']">Register</a></li>
-        <li><a class="nav-link" href="#" (click)="onLogoutClick()">Logout</a></li>
+        <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/login']">Login</a></li>
+        <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/register']">Register</a></li>
+        <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
+        <li ><a class="nav-link" href="#" (click)="onLogoutClick()">Logout</a></li>
       </ul>
     </div>
   </div>
