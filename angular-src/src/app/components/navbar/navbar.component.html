@@ -30,7 +30,7 @@
           <a class="nav-link" [routerLink]="['/register']">Register</a>
         </li>
         <li class="nav-item dropdown" *ngIf="!authService.loggedIn();" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name</a>
+          <a class="nav-link dropdown-toggle" *ngIf="!authService.loggedIn();" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{authService.user?.name}}</a>
           <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownProfile">
             <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
             <a class="dropdown-item" href="#" (click)="onLogoutClick()">Logout</a>

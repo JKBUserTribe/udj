@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   user: Object;
-  currentUser: Object;
 
   constructor(
     private authService: AuthService,
@@ -19,15 +18,6 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(!this.authService.loggedIn()){
-      this.authService.getProfile().subscribe((profile: any) => {
-        this.currentUser = profile.user;
-      },
-      err => {
-        console.log(err);
-        return false;
-      })
-    }
   }
 
   onLogoutClick(){
