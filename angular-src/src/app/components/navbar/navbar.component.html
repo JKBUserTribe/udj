@@ -7,7 +7,7 @@
       <a class="navbar-brand" href="#">United DJs</a>
     </div>
 
-    <div class="navbar-collapse collapse" id="navbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav mr-auto">
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/']">Home</a></li>
       </ul>
@@ -17,7 +17,7 @@
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
 
-      <ul class="nav navbar-nav mr-sm-2 ml-4">
+      <ul class="nav navbar-nav mr-lg-2 ml-lg-4">
         <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/login']">Login</a></li>
         <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/register']">Register</a></li>
         <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
