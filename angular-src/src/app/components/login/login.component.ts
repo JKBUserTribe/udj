@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
     }
 
-    this.authService.authenticateUser(user).subscribe(data => {
+    this.authService.authenticateUser(user).subscribe((data: any) => {
       if(data.success){
 
         this.authService.storeUserData(data.token, data.user);

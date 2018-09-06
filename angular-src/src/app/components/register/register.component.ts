@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
     }
 
     // Register User
-    this.authService.registerUser(user).subscribe(data => {
+    this.authService.registerUser(user).subscribe((data: any) => {
       if(data.success){
 
         this._flashMessagesService.show('User has been registered', {
