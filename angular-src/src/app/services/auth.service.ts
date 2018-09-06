@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,14 @@ export class AuthService {
   }
 
   loggedIn(){
-    //console.log(this.jwtHelper.isTokenExpired());
+    this.loadToken();
+
+    if (this.authToken == undefined ){
+      return true
+     } else {
+       const helper = new JwtHelperService();
+       return helper.isTokenExpired(this.authToken);
+     }
   }
 
   logout(){
