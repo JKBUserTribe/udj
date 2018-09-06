@@ -24,6 +24,7 @@ const appRoutes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'profile', component: ProfileComponent},
+  {path:'products', component: ProductsComponent}
 ]
 
 export function tokenGetter() {

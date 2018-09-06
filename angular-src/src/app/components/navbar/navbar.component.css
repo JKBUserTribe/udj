@@ -1,6 +1,10 @@
 .nav-link{
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   font-weight: 400;
   text-transform: none;
+}
+
+.dropdown-item{
+  font-size: 0.9rem;
 }
