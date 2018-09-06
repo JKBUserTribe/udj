@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,30 +10,28 @@ export class AuthService {
   user: any;
 
   constructor(
-    private http:Http
+    private http:HttpClient
   ) { }
 
   registerUser(user){
-    let headers = new Headers();
+    let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
-      .pipe(map(res => res.json()));
   }
 
   authenticateUser(user){
-    let headers = new Headers();
+    let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
-      .pipe(map(res => res.json()));
   }
 
   getProfile(){
-    let headers = new Headers();
     this.loadToken();
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type','application/json');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.authToken;
+    });
     return this.http.get('http://localhost:3000/users/profile', {headers: headers})
-      .pipe(map(res => res.json()));
   }﻿
 
   loadToken(){
