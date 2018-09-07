@@ -54,7 +54,8 @@ router.post('/authenticate', (req, res, next) => {
         user = {
           _id: user._id,
           name: user.name,
-          email: user.email
+          email: user.email,
+          role: user.role
         }
 
         const token = jwt.sign({data: user}, config.secret, {
@@ -67,7 +68,8 @@ router.post('/authenticate', (req, res, next) => {
           user: {
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            role: user.role
           },
           msg: 'Welcome '+user.name
         })

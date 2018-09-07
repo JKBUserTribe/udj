@@ -14,18 +14,22 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './services/auth.guard.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { AntiAuthGuard } from './services/anti-auth-guard.service';
+import { RoleGuardService as RoleGuard } from './services/role-guard.service';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
+  {path:'register', component: RegisterComponent, canActivate:[AntiAuthGuard]},
+  {path:'login', component: LoginComponent, canActivate:[AntiAuthGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path:'products', component: ProductsComponent}
+  {path:'products', component: ProductsComponent},
+  {path:'admin', component: AdminComponent, canActivate:[RoleGuard], data: {expectedRole: 'admin'}}
 ]
 
 export function tokenGetter() {
@@ -41,7 +45,8 @@ export function tokenGetter() {
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    ProductsComponent
+    ProductsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,9 @@ export function tokenGetter() {
   providers: [
     ValidateService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AntiAuthGuard,
+    RoleGuard
   ],
   bootstrap: [AppComponent]
 })
