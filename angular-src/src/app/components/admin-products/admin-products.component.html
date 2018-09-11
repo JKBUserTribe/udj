@@ -1,0 +1,23 @@
+<h2 class="pb-2 mt-4 mb-2">Products</h2>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNewProductForm" aria-expanded="false" aria-controls="collapseExample">
+  Add a new product
+</button>
+<div class="collapse" id="collapseNewProductForm">
+  <div class="card card-body mt-4">
+    <form (submit)="onRegisterSubmit()">
+      <div class="form-group">
+        <label>Display Name</label>
+        <input type="text" [(ngModel)]="display_name" name="display_name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Product Description</label>
+        <input type="text" [(ngModel)]="product_description" name="product_description" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Brand</label>
+        <input type="text" [(ngModel)]="brand" name="brand" class="form-control">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+  </div>
+</div>

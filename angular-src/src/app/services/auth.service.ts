@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   authToken: any;
   user: any;
+  product: any;
 
   constructor(
     private http:HttpClient
@@ -19,6 +20,13 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+  }
+
+  registerProduct(product){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:3000/products/register', product, {headers: headers})
   }
 
   authenticateUser(user){

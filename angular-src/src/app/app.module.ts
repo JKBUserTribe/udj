@@ -14,7 +14,9 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -29,7 +31,9 @@ const appRoutes: Routes = [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'products', component: ProductsComponent},
+  {path:'products/detail/:id', component: ProductDetailComponent},
   {path:'admin', component: AdminComponent, canActivate:[RoleGuard], data: {expectedRole: 'admin'}},
+  {path:'admin/products', component: AdminProductsComponent, canActivate:[RoleGuard], data: {expectedRole: 'admin'}},
   {path:'**', redirectTo: ''}
 ]
 
@@ -47,7 +51,9 @@ export function tokenGetter() {
     DashboardComponent,
     ProfileComponent,
     ProductsComponent,
-    AdminComponent
+    ProductDetailComponent,
+    AdminComponent,
+    AdminProductsComponent
   ],
   imports: [
     BrowserModule,
