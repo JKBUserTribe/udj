@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
-import { AuthService } from '../../services/auth.service';
+import { ProductService } from '../../services/product.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class AdminProductsComponent implements OnInit {
 
   constructor(
     private validateService: ValidateService,
-    private authService: AuthService,
+    private productService: ProductService,
     private _flashMessagesService: FlashMessagesService,
     private router: Router
   ) { }
@@ -44,7 +44,7 @@ export class AdminProductsComponent implements OnInit {
     }
 
     // Register User
-    this.authService.registerProduct(product).subscribe((data: any) => {
+    this.productService.registerProduct(product).subscribe((data: any) => {
       if(data.success){
 
         this._flashMessagesService.show('Product has been registered', {
