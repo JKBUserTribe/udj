@@ -18,8 +18,8 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe(data => {
-      this.products = data.products;
+    this.productService.getProducts().subscribe((data: any) => {
+      this.products = data.products.slice(0, 25);
     },
     err => {
       console.log(err);

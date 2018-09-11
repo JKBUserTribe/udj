@@ -16,7 +16,7 @@ export class ValidateService {
   }
 
   validateProduct(product){
-    if(!product.display_name || !product.product_description || !product.brand || product.display_name.length == 0 || product.product_description.length == 0 || product.brand.length == 0){
+    if(!product.name || !product.description || !product.brand || product.name.length == 0 || product.description.length == 0 || product.brand.length == 0){
       return false;
     } else {
       return true;

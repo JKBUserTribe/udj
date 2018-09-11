@@ -31,10 +31,10 @@ router.get('/all', (req, res, next) => {
   Product.find({}, (err, products) => {
     if(err) throw err;
     if(!products){
-      return res.json({success: false, msg: "Couldn't get products"});
+      return res.json({success: false});
     }
 
-    data = []
+    const data = []
     products.forEach(function(object){
       data.push({
         _id: object._id,
