@@ -32,6 +32,7 @@
         <li class="nav-item dropdown" *ngIf="!authService.loggedIn();" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
           <a class="nav-link dropdown-toggle" *ngIf="!authService.loggedIn();" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NAME</a>
           <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownProfile">
+            <a class="dropdown-item" *ngIf="authService.isAdmin();" [routerLink]="['/admin']">Admin</a>
             <a class="dropdown-item" [routerLink]="['/dashboard']">Dashboard</a>
             <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
             <a class="dropdown-item" href="#" (click)="onLogoutClick()">Logout</a>

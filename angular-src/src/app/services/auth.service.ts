@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,21 @@ export class AuthService {
        const helper = new JwtHelperService();
        return helper.isTokenExpired(this.authToken);
      }
+  }
+
+  isAdmin()  {
+    const expectedRole = "admin";
+    const token = localStorage.getItem('id_token');
+    const tokenPayload = decode(token);
+
+    this.loggedIn();
+
+    if ( this.loggedIn() || tokenPayload.data.role !== expectedRole ) {
+      return false;
+      console.log("don't show admin");
+    }
+      return true;
+      console.log("show admin");
   }
 
   logout(){
