@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
-  display_name: String;
-  product_description: String;
+  name: String;
+  description: String;
   brand: String;
 
   constructor(
@@ -27,8 +27,8 @@ export class AdminProductsComponent implements OnInit {
   onRegisterSubmit(){
     const product = {
 
-      display_name: this.display_name,
-      product_description: this.product_description,
+      name: this.name,
+      description: this.description,
       brand: this.brand
 
     }

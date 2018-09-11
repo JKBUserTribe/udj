@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const config = require('../config/database');
 const Product = require('../models/product');
 
@@ -7,8 +8,8 @@ const Product = require('../models/product');
 router.post('/register', (req, res, next) => {
   let newProduct = new Product({
 
-    display_name: req.body.display_name,
-    product_description: req.body.product_description,
+    name: req.body.name,
+    description: req.body.description,
     brand: req.body.brand,
     info: req.body.info,
     price: req.body.price,
@@ -23,6 +24,35 @@ router.post('/register', (req, res, next) => {
       res.json({success: true, msg:'Product registered'})
     }
   })
+});
+
+// Get all products Route
+router.get('/all', (req, res, next) => {
+  Product.find({}, (err, products) => {
+    if(err) throw err;
+    if(!products){
+      return res.json({success: false, msg: "Couldn't get products"});
+    }
+
+    data = []
+    products.forEach(function(object){
+      data.push({
+        _id: object._id,
+        name: object.name,
+        description: object.description,
+        brand: object.brand,
+        info: object.info,
+        price: object.price,
+        release_date: object.release_date,
+      });
+    });
+
+
+    res.json({
+      success: true,
+      products: data
+    })
+  });
 });
 
 module.exports = router;

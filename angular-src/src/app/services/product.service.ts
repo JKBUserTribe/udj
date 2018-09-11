@@ -22,28 +22,10 @@ export class ProductService {
     return this.http.post('http://localhost:3000/products/register', product, {headers: headers})
   }
 
-  getProduct(){
+  getProducts(){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.authToken
+      'Content-Type': 'application/json'
     });
-    return this.http.get('http://localhost:3000/products/details', {headers: headers})
+    return this.http.get('http://localhost:3000/products/all', {headers: headers})
   }﻿
-/*
-  getProducts(): Observable<Product[]> {
-    // TODO: send the message _after_ fetching the heroes
-    this._flashMessagesService.show(`ProductService: fetched products`, {
-      cssClass: 'alert-success',
-    });
-    return of(PRODUCTS);
-  }
-
-  getProduct(id: number): Observable<Product> {
-    // TODO: send the message _after_ fetching the hero
-    this._flashMessagesService.show(`ProductService: fetched product id=${id}`, {
-      cssClass: 'alert-success',
-    });
-    return of(PRODUCTS.find(product => product.id === id));
-  }
-  */
 }

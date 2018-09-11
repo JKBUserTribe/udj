@@ -1,2 +1,9 @@
 <h2 class="pb-2 mt-4 mb-2">Products</h2>
 <p>This is where the products are</p>
+<ul class="products">
+  <li *ngFor="let product of products">
+    <a routerLink="/detail/{{product.id}}">
+      <span class="badge">{{product.brand}}</span> {{product.name}}
+    </a>
+  </li>
+</ul>

@@ -3,11 +3,11 @@ const config = require('../config/database');
 
 // User Schema
 const ProductSchema = mongoose.Schema({
-  display_name : {
+  name : {
     type: String,
     required: true
   },
-  product_description: {
+  description: {
     type: String,
     required: true
   },
