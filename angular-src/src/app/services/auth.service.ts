@@ -62,8 +62,8 @@ export class AuthService {
      }
   }
 
-  isAdmin()  {
-    const expectedRole = "admin";
+  isRole(role)  {
+    const expectedRole = role;
     const token = localStorage.getItem('id_token');
     const tokenPayload = decode(token);
 
@@ -71,10 +71,8 @@ export class AuthService {
 
     if ( this.loggedIn() || tokenPayload.data.role !== expectedRole ) {
       return false;
-      console.log("don't show admin");
     }
       return true;
-      console.log("show admin");
   }
 
   logout(){
