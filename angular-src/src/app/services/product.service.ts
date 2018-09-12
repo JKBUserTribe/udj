@@ -22,6 +22,13 @@ export class ProductService {
     return this.http.post('http://localhost:3000/products/register', product, {headers: headers})
   }
 
+  getProduct(id){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:3000/products/id', id, {headers: headers})
+  }﻿
+
   getProducts(){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
