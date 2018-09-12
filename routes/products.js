@@ -56,7 +56,9 @@ router.get('/all', (req, res, next) => {
 });
 
 router.post('/id', (req, res, next) => {
-  Product.find({"_id": req.body }, (err, product) => {
+  const id = req.body._id;
+
+  Product.getProductById( id, (err, product) => {
     if(err) throw err;
     if(!product){
       return res.json({success: false});
