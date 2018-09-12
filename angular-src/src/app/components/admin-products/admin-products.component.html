@@ -21,3 +21,10 @@
     </form>
   </div>
 </div>
+<ul class="products pb-2 mt-4 mb-2">
+  <li *ngFor="let product of products">
+    <a routerLink="/products/detail/{{product._id}}">
+      {{product.name}}
+    </a>
+  </li>
+</ul>
