@@ -3,6 +3,9 @@ import { ValidateService } from '../../services/validate.service';
 import { ProductService } from '../../services/product.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk/collections';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-admin-products',
@@ -17,6 +20,9 @@ export class AdminProductsComponent implements OnInit {
 
   products: Object;
 
+  dataSource = new ProductDataSource(this.productService);
+  displayedColumns = ['name', 'description', 'brand', 'stock'];
+
   constructor(
     private validateService: ValidateService,
     private productService: ProductService,
@@ -25,12 +31,12 @@ export class AdminProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getProducts()
+    this.getProducts();
   }
 
   getProducts(): void {
     this.productService.getProducts().subscribe((data: any) => {
-      this.products = data.products.slice(0, 25);
+      this.products = data.products;
     },
     err => {
       console.log(err);
@@ -54,7 +60,6 @@ export class AdminProductsComponent implements OnInit {
       this._flashMessagesService.show('Please fill in all the missing fields', {
         cssClass: 'alert-danger',
       });
-
       return false;
     }
 
@@ -65,15 +70,25 @@ export class AdminProductsComponent implements OnInit {
         this._flashMessagesService.show('Product has been registered', {
           cssClass: 'alert-success',
         });
-        this.getProducts();
       } else {
 
         this._flashMessagesService.show('Something went wrong', {
           cssClass: 'alert-danger',
         });
-        this.getProducts();
       }
     });
   }
 
+}
+
+export class ProductDataSource extends DataSource<any> {
+  constructor(private productService: ProductService) {
+    super();
+  }
+
+  connect(): Observable<Product[]> {
+    return this.productService.getProductObs();
+  }
+
+  disconnect() {}
 }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MatTableModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,6 +24,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AntiAuthGuard } from './services/anti-auth-guard.service';
 import { RoleGuardService as RoleGuard } from './services/role-guard.service';
+import { ProductService } from './services/product.service';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -61,6 +63,7 @@ export function tokenGetter() {
     FormsModule,
     FlashMessagesModule.forRoot(),
     HttpClientModule,
+    MatTableModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -74,7 +77,8 @@ export function tokenGetter() {
     AuthService,
     AuthGuard,
     AntiAuthGuard,
-    RoleGuard
+    RoleGuard,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
