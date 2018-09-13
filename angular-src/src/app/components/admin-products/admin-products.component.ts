@@ -13,6 +13,8 @@ export class AdminProductsComponent implements OnInit {
   name: String;
   description: String;
   brand: String;
+  stock: Number;
+
   products: Object;
 
   constructor(
@@ -41,7 +43,8 @@ export class AdminProductsComponent implements OnInit {
 
       name: this.name,
       description: this.description,
-      brand: this.brand
+      brand: this.brand,
+      stock: this.stock
 
     }
 
@@ -62,15 +65,13 @@ export class AdminProductsComponent implements OnInit {
         this._flashMessagesService.show('Product has been registered', {
           cssClass: 'alert-success',
         });
-        this.router.navigate(['/admin/products']);
-
+        this.getProducts();
       } else {
 
         this._flashMessagesService.show('Something went wrong', {
           cssClass: 'alert-danger',
         });
-
-        this.router.navigate(['/admin/products']);
+        this.getProducts();
       }
     });
   }

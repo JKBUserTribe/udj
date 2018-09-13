@@ -23,6 +23,10 @@ const ProductSchema = mongoose.Schema({
   },
   release_date: {
     type: Date
+  },
+  stock: {
+    type: Number,
+    required: true
   }
 });
 

@@ -13,7 +13,8 @@ router.post('/register', (req, res, next) => {
     brand: req.body.brand,
     info: req.body.info,
     price: req.body.price,
-    release_date: req.body.release_date
+    release_date: req.body.release_date,
+    stock: req.body.stock
 
   });
 
@@ -44,6 +45,7 @@ router.get('/all', (req, res, next) => {
         info: object.info,
         price: object.price,
         release_date: object.release_date,
+        stock: object.stock
       });
     });
 

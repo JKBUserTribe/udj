@@ -4,7 +4,7 @@
 </button>
 <div class="collapse" id="collapseNewProductForm">
   <div class="card card-body mt-4">
-    <form (submit)="onRegisterSubmit()">
+    <form #registerProductForm="ngForm" (submit)="onRegisterSubmit(); registerProductForm.reset();">
       <div class="form-group">
         <label>Name</label>
         <input type="text" [(ngModel)]="name" name="name" class="form-control">
@@ -16,6 +16,10 @@
       <div class="form-group">
         <label>Brand</label>
         <input type="text" [(ngModel)]="brand" name="brand" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Stock</label>
+        <input type="number" [(ngModel)]="stock" name="stock" class="form-control">
       </div>
       <input type="submit" class="btn btn-primary" value="Submit">
     </form>
