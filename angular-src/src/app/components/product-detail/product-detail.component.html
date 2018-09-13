@@ -1,6 +1,7 @@
 <div *ngIf="product">
-  <h2 class="pb-2 mt-4 mb-2">{{product.name | uppercase}}</h2>
+  <h2 class="pb-2 mt-4 mb-0">{{product.name | uppercase}}</h2>
+  <p>{{product.description}}</p>
   <div>
-    <h3><a routerLink="/products/detail/{{product._id}}">{{product.brand}}</a></h3>
+    <h3><a routerLink="/products/{{product.brand}}">{{product.brand}}</a></h3>
   </div>
 </div>

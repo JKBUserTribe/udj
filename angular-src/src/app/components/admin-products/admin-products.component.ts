@@ -13,6 +13,7 @@ export class AdminProductsComponent implements OnInit {
   name: String;
   description: String;
   brand: String;
+  products: Object;
 
   constructor(
     private validateService: ValidateService,
@@ -22,6 +23,17 @@ export class AdminProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getProducts()
+  }
+
+  getProducts(): void {
+    this.productService.getProducts().subscribe((data: any) => {
+      this.products = data.products.slice(0, 25);
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
   onRegisterSubmit(){
@@ -43,14 +55,14 @@ export class AdminProductsComponent implements OnInit {
       return false;
     }
 
-    // Register User
+    // Register Product
     this.productService.registerProduct(product).subscribe((data: any) => {
       if(data.success){
 
         this._flashMessagesService.show('Product has been registered', {
           cssClass: 'alert-success',
         });
-        this.router.navigate(['/products']);
+        this.router.navigate(['/admin/products']);
 
       } else {
 
