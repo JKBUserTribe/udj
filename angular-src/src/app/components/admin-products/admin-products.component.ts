@@ -20,7 +20,7 @@ export class AdminProductsComponent implements OnInit {
 
   products: Object;
 
-  dataSource = new ProductDataSource;
+  dataSource: ProductDataSource;
   displayedColumns = ['name', 'description', 'brand', 'stock'];
 
   constructor(
