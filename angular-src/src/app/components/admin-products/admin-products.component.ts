@@ -20,7 +20,7 @@ export class AdminProductsComponent implements OnInit {
 
   products: Object;
 
-  dataSource = new ProductDataSource(this.productService);
+  dataSource = new ProductDataSource;
   displayedColumns = ['name', 'description', 'brand', 'stock'];
 
   constructor(
@@ -36,7 +36,7 @@ export class AdminProductsComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getProducts().subscribe((data: any) => {
-      this.products = data.products;
+      this.dataSource = new ProductDataSource(this.productService);
     },
     err => {
       console.log(err);
@@ -70,6 +70,7 @@ export class AdminProductsComponent implements OnInit {
         this._flashMessagesService.show('Product has been registered', {
           cssClass: 'alert-success',
         });
+        this.getProducts();
       } else {
 
         this._flashMessagesService.show('Something went wrong', {
