@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,17 +9,17 @@
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav mr-auto">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
           <a class="nav-link" [routerLink]="['/']">Home</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
           <a class="nav-link" [routerLink]="['/products']">Products</a>
         </li>
       </ul>
 
       <form (submit)="onSearchSubmit()" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-purple dark my-2 my-sm-0" type="submit">Search</button>
       </form>
 
       <ul class="nav navbar-nav mr-lg-2 ml-lg-4">
@@ -31,7 +31,7 @@
         </li>
         <li class="nav-item dropdown" *ngIf="!authService.loggedIn();" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
           <a class="nav-link dropdown-toggle" *ngIf="!authService.loggedIn();" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NAME</a>
-          <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownProfile">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
             <a class="dropdown-item" *ngIf="authService.isRole('admin');" [routerLink]="['/admin']">Admin</a>
             <a class="dropdown-item" [routerLink]="['/dashboard']">Dashboard</a>
             <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
