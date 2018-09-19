@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Observable, of } from 'rxjs';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Product } from '../models/product.model';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,16 @@ export class ProductService {
   product: any;
 
   constructor(
+    private authService: AuthService,
     private _flashMessagesService: FlashMessagesService,
     private http:HttpClient
   ) { }
 
   registerProduct(product){
+    this.authService.loadToken();
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': this.authService.authToken
     });
     return this.http.post('http://localhost:3000/products/register', product, {headers: headers})
   }
