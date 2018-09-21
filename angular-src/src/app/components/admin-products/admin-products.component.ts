@@ -13,6 +13,8 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  //@ViewChild(MatSort) sort: MatSort;
   name: String;
   description: String;
   brand: String;

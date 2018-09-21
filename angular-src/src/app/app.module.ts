@@ -6,6 +6,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatTableModule } from '@angular/material';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -64,6 +65,7 @@ export function tokenGetter() {
     FlashMessagesModule.forRoot(),
     HttpClientModule,
     MatTableModule,
+    MatSortModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
