@@ -5,8 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatButtonModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { MatSortModule } from '@angular/material/sort';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -66,13 +70,20 @@ export function tokenGetter() {
     HttpClientModule,
     MatTableModule,
     MatSortModule,
+    MatMenuModule,
+    MatIconModule,
+    MatToolbarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:3001'],
         blacklistedRoutes: ['localhost:3001/auth/']
       }
-    })
+    }),
+    LayoutModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     ValidateService,
